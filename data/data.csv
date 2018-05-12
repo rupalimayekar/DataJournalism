@@ -1,45 +1,45 @@
-﻿stateAbbr,state,heartAttack,medianIncome
-AL,Alabama,5.9,42830
-AZ,Arizona,4.4,50068
-AR,Arkansas,6.7,41262
-CA,California,3.5,61933
-CO,Colorado,3.1,61303
-CT,Connecticut,3.7,70048
-DE,Delaware,5,59716
-DC,District of Columbia,2.6,71648
-FL,Florida,5.3,47463
-GA,Georgia,4.5,49321
-HI,Hawaii,3.1,69592
-ID,Idaho,3.7,47861
-IL,Illinois,3.7,57444
-IN,Indiana,5,49446
-IA,Iowa,4.4,53712
-KS,Kansas,4.2,52504
-KY,Kentucky,6.8,42958
-LA,Louisiana,5.2,44555
-MD,Maryland,3.2,73971
-MA,Massachusetts,4.1,69160
-MI,Michigan,5.2,49847
-MN,Minnesota,3.8,61481
-MS,Mississippi,4.9,39680
-MO,Missouri,5.4,48363
-NE,Nebraska,3.8,52686
-NV,Nevada,4.8,51450
-NH,New Hampshire,3.8,66532
-NJ,New Jersey,4.2,71919
-NM,New Mexico,4.2,44803
-NY,New York,3.8,58878
-NC,North Carolina,5.1,46556
-OH,Ohio,5.4,49308
-OK,Oklahoma,5.5,47529
-OR,Oregon,4.6,51075
-PA,Pennsylvania,4.8,53234
-RI,Rhode Island,4.3,54891
-SC,South Carolina,4.6,45238
-TN,Tennessee,5.7,44361
-TX,Texas,3.7,53035
-UT,Utah,2.9,60922
-VA,Virginia,4.2,64902
-WA,Washington,3.8,61366
-WI,Wisconsin,3.7,52622
-PR,Puerto Rico,5.3,18928
+﻿stateAbbr,state,medianIncome,heartAttack,povertyAbove200,collegePlus,noHighSchoolGrad,hasHealthCare
+AL,Alabama,42830,5.9,59.6,20.4,15.3,86.1
+AZ,Arizona,50068,4.4,61.2,23.9,13.9,85.6
+AR,Arkansas,41262,6.7,57.3,18.2,14.7,83.7
+CA,California,61933,3.5,63.9,27.3,17.9,85.2
+CO,Colorado,61303,3.1,71,33.4,9.5,87.2
+CT,Connecticut,70048,3.7,75.6,32.9,9.9,91.3
+DE,Delaware,59716,5,72.5,26.1,11,91.4
+DC,District of Columbia,71648,2.6,68.5,49.1,9.8,91.7
+FL,Florida,47463,5.3,62.1,24.1,12.8,82.4
+GA,Georgia,49321,4.5,61.6,24.7,14.4,79.1
+HI,Hawaii,69592,3.1,74.4,27.3,8.3,91.9
+ID,Idaho,47861,3.7,61.8,22.4,9.9,83.5
+IL,Illinois,57444,3.7,68.5,28.4,11.8,88.1
+IN,Indiana,49446,5,65.3,20.8,11.6,85.3
+IA,Iowa,53712,4.4,70.1,23.4,7.9,92.3
+KS,Kansas,52504,4.2,68,27,9.7,85.5
+KY,Kentucky,42958,6.8,60.2,19.3,15.5,90
+LA,Louisiana,44555,5.2,59.7,19.8,16.4,81.3
+MD,Maryland,73971,3.2,76.2,33.3,10.4,90.8
+MA,Massachusetts,69160,4.1,75.1,35.5,10.3,95.4
+MI,Michigan,49847,5.2,65.3,23.4,10.1,89.7
+MN,Minnesota,61481,3.8,73.4,29.6,7.4,92.7
+MS,Mississippi,39680,4.9,55.1,18.1,17.2,81.2
+MO,Missouri,48363,5.4,65,23.8,11.1,87.1
+NE,Nebraska,52686,3.8,69,25.8,9.7,87.7
+NV,Nevada,51450,4.8,63.3,19.9,14.9,82.9
+NH,New Hampshire,66532,3.8,77.6,31,7.8,88.6
+NJ,New Jersey,71919,4.2,75.1,32.5,10.9,87.6
+NM,New Mexico,44803,4.2,56.5,22.8,15.8,84.6
+NY,New York,58878,3.8,67.2,30.4,14.3,87.7
+NC,North Carolina,46556,5.1,61.4,24.3,13.6,83.9
+OH,Ohio,49308,5.4,66,22.8,10.6,89.8
+OK,Oklahoma,47529,5.5,62.2,21,12.7,86.1
+OR,Oregon,51075,4.6,63.2,26.8,10.3,89
+PA,Pennsylvania,53234,4.8,69.3,25.1,10.6,89.9
+RI,Rhode Island,54891,4.3,69.1,27.9,14.2,92
+SC,South Carolina,45238,4.6,60.8,22.5,13.9,82.9
+TN,Tennessee,44361,5.7,60.2,21.5,14.2,85.8
+TX,Texas,53035,3.7,62,23.5,17.8,75.1
+UT,Utah,60922,2.9,69.1,25.8,8.6,86.1
+VA,Virginia,64902,4.2,72.9,31.7,11.5,87
+WA,Washington,61366,3.8,70.1,28.7,9.6,89.3
+WI,Wisconsin,52622,3.7,69.5,24.3,8.6,91.5
+PR,Puerto Rico,18928,5.3,26.3,29.4,26.2,94.1

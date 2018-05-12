@@ -1,3 +1,11 @@
 .label {
-    font-size: 20px;
+    font-size: 15px;
+}
+
+.labelbold {
+    font-weight: bold;
+}
+
+.labelfade {
+    color:Blue; 
 }
