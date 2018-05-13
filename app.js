@@ -455,5 +455,11 @@ d3.csv("data/data.csv", function (error, healthData) {
 // Add the Chart Analysis description for the chart
 var chartAnalysis = d3.select("#chartAnalysis")
     .append("text")
-    .text("Analyzing Median Income vs Heart Attacks");
+    .text(`The above chart shows our analysis on the current trends that are shaping people's lives. 
+    We show some of the health risks facing certain demographical information as listed here.
+    We see that higher Median Household Income fewer the percentage of people that have had heart attacks.
+    Higher the Median Household Income more people have had a college degree or higher education level.
+    Higher the Median Household Income slightly more people have health care.
+    -More people with no High School Graduation means more heart attacks. The more the people above Poverty Line, the more people
+    have college degree. You can try all the combinations in the above graph and see for yourself.`);
 

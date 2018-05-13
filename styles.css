@@ -38,3 +38,9 @@
     top: 100%;
     left: 0;
   }
+
+  .data_header {
+    background-image: url('images/article-break-business-920115.jpg');
+
+    height: 300px;
+  }
