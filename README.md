@@ -50,7 +50,7 @@ Take a look at the resulting html page :
 * Image credits : Photo by rawpixel.com from [Pexels](https://www.pexels.com/)
 * Data Sources : 
     * [US Census Bureau](https://www.census.gov)
-    * [Centere for Disease Control](https://chronicdata.cdc.gov)
+    * [Center for Disease Control](https://chronicdata.cdc.gov)
 
             
 
