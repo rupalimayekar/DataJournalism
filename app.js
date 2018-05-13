@@ -186,7 +186,7 @@ d3.csv("data/data.csv", function (error, healthData) {
     // Add x-axis label for Median Income
     svg.append("text")
         .attr("class", "x label")
-        .attr("id", "medianIncomeLabel")
+        .attr("id", "medianIncome")
         .attr("text-anchor", "middle")
         .attr("x", svgWidth/2)
         .attr("y", height + 80)
@@ -202,18 +202,24 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createXAxis(healthData, "medianIncome");
 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#noHighSchoolGradLabel").classed("labelbold", false);
-                d3.select("#povertyAbove200Label").classed("labelbold", false);
+                d3.select("#noHighSchoolGrad").classed("labelbold", false);
+                d3.select("#povertyAbove200").classed("labelbold", false);
 
                 transitionCircles("x", "medianIncome");
                 addChartTitle();
             }
+        })
+        .on("mouseover", function() {
+            d3.select(this).style("cursor", "pointer"); 
+        })
+        .on("mouseout", function() {
+            d3.select(this).style("cursor", "default"); 
         });
    
     // Add x-axis label for No High School Graduation
     svg.append("text")
         .attr("class", "x label")
-        .attr("id", "noHighSchoolGradLabel")
+        .attr("id", "noHighSchoolGrad")
         .attr("text-anchor", "middle")
         .attr("x", svgWidth/2)
         .attr("y", height + 100)
@@ -228,8 +234,8 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createXAxis(healthData, "noHighSchoolGrad");
                 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#medianIncomeLabel").classed("labelbold", false);
-                d3.select("#povertyAbove200Label").classed("labelbold", false);
+                d3.select("#medianIncome").classed("labelbold", false);
+                d3.select("#povertyAbove200").classed("labelbold", false);
 
                 transitionCircles("x", "noHighSchoolGrad");
                 addChartTitle();
@@ -240,7 +246,7 @@ d3.csv("data/data.csv", function (error, healthData) {
     // Add x-axis label for 200% Above Poverty
     svg.append("text")
         .attr("class", "x label")
-        .attr("id", "povertyAbove200Label")
+        .attr("id", "povertyAbove200")
         .attr("text-anchor", "middle")
         .attr("x", svgWidth/2)
         .attr("y", height + 120)
@@ -255,8 +261,8 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createXAxis(healthData, "povertyAbove200");
                 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#medianIncomeLabel").classed("labelbold", false);
-                d3.select("#noHighSchoolGradLabel").classed("labelbold", false);
+                d3.select("#medianIncome").classed("labelbold", false);
+                d3.select("#noHighSchoolGrad").classed("labelbold", false);
 
                 transitionCircles("x", "povertyAbove200");
                 addChartTitle();
@@ -268,7 +274,7 @@ d3.csv("data/data.csv", function (error, healthData) {
     // Add y-axis label for Heart Attack
     svg.append("text")
         .attr("class", "y label")
-        .attr("id", "heartAttackLabel")
+        .attr("id", "heartAttack")
         .attr("text-anchor", "middle")
         .attr("x", -svgHeight/2)
         .attr("y", 5)
@@ -286,8 +292,8 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createYAxis(healthData, "heartAttack");
                 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#hasHealthCareLabel").classed("labelbold", false);
-                d3.select("#collegePlusLabel").classed("labelbold", false);
+                d3.select("#hasHealthCare").classed("labelbold", false);
+                d3.select("#collegePlus").classed("labelbold", false);
 
                 transitionCircles("y", "heartAttack");
                 addChartTitle();
@@ -297,7 +303,7 @@ d3.csv("data/data.csv", function (error, healthData) {
     // Add y-axis label for Has Health Care
     svg.append("text")
         .attr("class", "y label")
-        .attr("id", "hasHealthCareLabel")
+        .attr("id", "hasHealthCare")
         .attr("text-anchor", "middle")
         .attr("x", -svgHeight/2)
         .attr("y", 25)
@@ -314,8 +320,8 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createYAxis(healthData, "hasHealthCare");
                 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#heartAttackLabel").classed("labelbold", false);
-                d3.select("#collegePlusLabel").classed("labelbold", false);
+                d3.select("#heartAttack").classed("labelbold", false);
+                d3.select("#collegePlus").classed("labelbold", false);
 
                 transitionCircles("y", "hasHealthCare");
                 addChartTitle();
@@ -325,7 +331,7 @@ d3.csv("data/data.csv", function (error, healthData) {
     // Add y-axis label for College Plus Education
     svg.append("text")
         .attr("class", "y label")
-        .attr("id", "collegePlusLabel")
+        .attr("id", "collegePlus")
         .attr("text-anchor", "middle")
         .attr("x", -svgHeight/2)
         .attr("y", 45)
@@ -342,14 +348,24 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createYAxis(healthData, "collegePlus");
                 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#heartAttackLabel").classed("labelbold", false);
-                d3.select("#hasHealthCareLabel").classed("labelbold", false);
+                d3.select("#heartAttack").classed("labelbold", false);
+                d3.select("#hasHealthCare").classed("labelbold", false);
 
                 transitionCircles("y", "collegePlus");
                 addChartTitle();
             }
         });
     
+    // Change the mousepointer when hovered over any of the labels to indicate that they
+    // are clickable
+    d3.selectAll(".label")
+    .on("mouseover", function() {
+        d3.select(this).style("cursor", "pointer"); 
+    })
+    .on("mouseout", function() {
+        d3.select(this).style("cursor", "default"); 
+    });
+
     // append circles - one for each data point
     var circlesGroup = chartGroup.selectAll("circle")
         .data(healthData)
@@ -377,6 +393,63 @@ d3.csv("data/data.csv", function (error, healthData) {
 
     addChartTitle();
 
+
+    // Initialize Tooltip
+    var toolTip = d3.tip()
+    .attr("class", "d3-tip")
+    .offset([-10, 0])
+    .html(function(d){
+        var activeLabels = d3.selectAll(".labelbold");
+        var labelx = activeLabels._groups[0][0].id;
+        var labely = activeLabels._groups[0][1].id;
+        
+        var xValue = null;
+        var yValue = null;
+
+        switch(labelx) {
+            case "medianIncome":
+                xValue = d.medianIncome;
+                break;        
+            case "noHighSchoolGrad":
+                xValue = d.noHighSchoolGrad;
+                break;
+            default:
+                xValue = d.povertyAbove200;
+                break;
+        }
+        
+        switch(labely) {
+            case "heartAttack":
+                yValue = d.heartAttack;
+                break;        
+            case "hasHealthCare":
+                yValue = d.hasHealthCare;
+                break;
+            default:
+                yValue = d.collegePlus;
+                break;
+        }
+
+        var tipText = `<strong>State:</strong> <span style='color:lightblue'>${d.state}</span><br>
+            <strong>${labelx}:</strong> <span style='color:lightblue'>${xValue}</span><br>
+            <strong>${labely}:</strong> <span style='color:lightblue'>${yValue}</span><br>`
+
+        return tipText;
+
+    });
+
+    chartGroup.call(toolTip);
+
+    // Create "mouseover" event listener to display tooltip
+    circlesGroup.on("mouseover", function (d) {
+        toolTip.show(d);
+    })
+    // Create "mouseout" event listener to hide tooltip
+    .on("mouseout", function (d) {
+        toolTip.hide(d);
+    });
+
+  
 });
 
 // Add the Chart Analysis description for the chart
