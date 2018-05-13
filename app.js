@@ -89,16 +89,16 @@ function createYAxis(healthData, yValue){
                 .domain([0, d3.max(healthData, d => d.heartAttack)+1])
                 .range([height, 0])
             break;
-        case "hasHealthCare":
-            console.log("hasHealthCare");
+        case "hasCancer":
+            console.log("hasCancer");
             yScale = d3.scaleLinear()
-                .domain([0, d3.max(healthData, d => d.hasHealthCare)+1])
+                .domain([0, d3.max(healthData, d => d.hasCancer)+1])
                 .range([height, 0])
             break;
-        case "collegePlus":
-            console.log("collegePlus");
+        case "hasDiabetes":
+            console.log("hasDiabetes");
             yScale = d3.scaleLinear()
-                .domain([0, d3.max(healthData, d => d.collegePlus)+1])
+                .domain([0, d3.max(healthData, d => d.hasDiabetes)+1])
                 .range([height, 0])
             break;
     }
@@ -134,12 +134,12 @@ function transitionCircles(axis, dataColumn) {
         if (dataColumn == "heartAttack") {
             circles.transition().duration(1000).attr("cy", d => yScale(d.heartAttack));
             texts.transition().duration(1000).attr("y", d => yScale(d.heartAttack)+4);
-        } else if (dataColumn == "hasHealthCare") {
-            circles.transition().duration(1000).attr("cy", d => yScale(d.hasHealthCare));
-            texts.transition().duration(1000).attr("y", d => yScale(d.hasHealthCare)+4);
+        } else if (dataColumn == "hasCancer") {
+            circles.transition().duration(1000).attr("cy", d => yScale(d.hasCancer));
+            texts.transition().duration(1000).attr("y", d => yScale(d.hasCancer)+4);
         }else {
-            circles.transition().duration(1000).attr("cy", d => yScale(d.collegePlus));
-            texts.transition().duration(1000).attr("y", d => yScale(d.collegePlus)+4);
+            circles.transition().duration(1000).attr("cy", d => yScale(d.hasDiabetes));
+            texts.transition().duration(1000).attr("y", d => yScale(d.hasDiabetes)+4);
         }
     }
 };
@@ -177,8 +177,8 @@ d3.csv("data/data.csv", function (error, healthData) {
         data.povertyAbove200 = + data.povertyAbove200;
 
         data.heartAttack = +data.heartAttack;
-        data.hasHealthCare = +data.hasHealthCare;
-        data.collegePlus = +data.collegePlus;
+        data.hasCancer = +data.hasCancer;
+        data.hasDiabetes = +data.hasDiabetes;
     })
 
     createXAxis(healthData, "medianIncome");
@@ -223,7 +223,7 @@ d3.csv("data/data.csv", function (error, healthData) {
         .attr("text-anchor", "middle")
         .attr("x", svgWidth/2)
         .attr("y", height + 100)
-        .text("No High School Graduation")
+        .text("No High School Graduation (%)")
         .on("click", function(){
             // if this label is already bold then don't do anything
             if (d3.select(this).classed("labelbold")) {
@@ -250,7 +250,7 @@ d3.csv("data/data.csv", function (error, healthData) {
         .attr("text-anchor", "middle")
         .attr("x", svgWidth/2)
         .attr("y", height + 120)
-        .text("200 % Above Poverty Line")
+        .text("Above Poverty Line (%)")
         .on("click", function(){
             // if this label is already bold then don't do anything
             if (d3.select(this).classed("labelbold")) {
@@ -280,7 +280,7 @@ d3.csv("data/data.csv", function (error, healthData) {
         .attr("y", 5)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
-        .text("Had a Heart Attack (%)")
+        .text("Had Heart Attack (%)")
         .classed("labelbold", true)
         .on("click", function(){
             // if this label is already bold then don't do anything
@@ -292,38 +292,38 @@ d3.csv("data/data.csv", function (error, healthData) {
                 createYAxis(healthData, "heartAttack");
                 
                 d3.select(this).classed("labelbold", true);
-                d3.select("#hasHealthCare").classed("labelbold", false);
-                d3.select("#collegePlus").classed("labelbold", false);
+                d3.select("#hasCancer").classed("labelbold", false);
+                d3.select("#hasDiabetes").classed("labelbold", false);
 
                 transitionCircles("y", "heartAttack");
                 addChartTitle();
             }
         });
     
-    // Add y-axis label for Has Health Care
+    // Add y-axis label for Has Cancer
     svg.append("text")
         .attr("class", "y label")
-        .attr("id", "hasHealthCare")
+        .attr("id", "hasCancer")
         .attr("text-anchor", "middle")
         .attr("x", -svgHeight/2)
         .attr("y", 25)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
-        .text("Has Health Care (%)")
+        .text("Had Cancer (%)")
         .on("click", function(){
             // if this label is already bold then don't do anything
             if (d3.select(this).classed("labelbold")) {
                 // ignore this click
-                console.log("Ignoring hasHealthCareLabel click as it is already active");
+                console.log("Ignoring hasCancer click as it is already active");
             } else {
                 //redraw x axis
-                createYAxis(healthData, "hasHealthCare");
+                createYAxis(healthData, "hasCancer");
                 
                 d3.select(this).classed("labelbold", true);
                 d3.select("#heartAttack").classed("labelbold", false);
-                d3.select("#collegePlus").classed("labelbold", false);
+                d3.select("#hasDiabetes").classed("labelbold", false);
 
-                transitionCircles("y", "hasHealthCare");
+                transitionCircles("y", "hasCancer");
                 addChartTitle();
             }
         });
@@ -331,27 +331,27 @@ d3.csv("data/data.csv", function (error, healthData) {
     // Add y-axis label for College Plus Education
     svg.append("text")
         .attr("class", "y label")
-        .attr("id", "collegePlus")
+        .attr("id", "hasDiabetes")
         .attr("text-anchor", "middle")
         .attr("x", -svgHeight/2)
         .attr("y", 45)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
-        .text("College Degree or more (%)")
+        .text("Had Diabetes (%)")
         .on("click", function(){
             // if this label is already bold then don't do anything
             if (d3.select(this).classed("labelbold")) {
                 // ignore this click
-                console.log("Ignoring collegePlusLabel click as it is already active");
+                console.log("Ignoring hasDiabetes click as it is already active");
             } else {
                 //redraw x axis
-                createYAxis(healthData, "collegePlus");
+                createYAxis(healthData, "hasDiabetes");
                 
                 d3.select(this).classed("labelbold", true);
                 d3.select("#heartAttack").classed("labelbold", false);
-                d3.select("#hasHealthCare").classed("labelbold", false);
+                d3.select("#hasCancer").classed("labelbold", false);
 
-                transitionCircles("y", "collegePlus");
+                transitionCircles("y", "hasDiabetes");
                 addChartTitle();
             }
         });
@@ -422,11 +422,11 @@ d3.csv("data/data.csv", function (error, healthData) {
             case "heartAttack":
                 yValue = d.heartAttack;
                 break;        
-            case "hasHealthCare":
-                yValue = d.hasHealthCare;
+            case "hasCancer":
+                yValue = d.hasCancer;
                 break;
             default:
-                yValue = d.collegePlus;
+                yValue = d.hasDiabetes;
                 break;
         }
 
@@ -456,10 +456,20 @@ d3.csv("data/data.csv", function (error, healthData) {
 var chartAnalysis = d3.select("#chartAnalysis")
     .append("text")
     .text(`The above chart shows our analysis on the current trends that are shaping people's lives. 
-    We show some of the health risks facing certain demographical information as listed here.
-    We see that higher Median Household Income fewer the percentage of people that have had heart attacks.
-    Higher the Median Household Income more people have had a college degree or higher education level.
-    Higher the Median Household Income slightly more people have health care.
-    -More people with no High School Graduation means more heart attacks. The more the people above Poverty Line, the more people
-    have college degree. You can try all the combinations in the above graph and see for yourself.`);
+    We show some of the health risks that occur in people with certain demographics as listed here.
+    We see that higher Median Household Income fewer the percentage of people that have had heart attacks or diabetes. 
+    However Median Income does not seem to affect the percent of people having Cancer as much. This might be because of 
+    the ability to get good preventive health care and lead a healthier lifestyle with the high incomes.
+    \n
+    We also see that as the percentage of people with No High School Graduation increases, the percentage of people having
+    heart attacks and diabetes also increases but it doesn't really affect Cancer as much. This shows that with more education
+    there is more health awareness and also more income leading to better preventive care and lifestyle which again verifies our 
+    analysis above.
+    \n
+    Lastly we also see a similar trend with the percentage of people being 200% above the poverty line. With more percentage of people
+    above the poverty line, there is a fewer percentage of people with heart attacks and diabetes, however it does not affect the p
+    ercentage of people with cancer as much. This also verifies out analysis above.
+
+    You can try all the combinations in the above graph and see for yourself how the various demographics parameters affect the 
+    health risks. Just click on the axis label to choose your parameter.`);
 
